@@ -4,6 +4,8 @@ from PIL import ImageTk,Image
 import pyautogui
 from time import sleep
 import sys
+import pathlib
+folder = pathlib.Path(__file__).parent.resolve()
 st=0
 def win():
     global rt
@@ -37,7 +39,7 @@ class ImgTk(Tk):
         self.img_back=img_back
     def move(self,y):
         self.geometry(str(self.w)+'x'+str(self.h)+'+0+'+str(y))
-root=ImgTk('pl.png')
+root=ImgTk(f'{folder}/pic/pl.png')
 #root.iconphoto(True,PhotoImage(file="icon.png"))
 root.iconbitmap(sys.executable)
 def move(event):
@@ -75,7 +77,7 @@ def tc(event):
     print(2)
     if messagebox.askyesno("911内存释放工具","是否要退出"):
         sys.exit()
-imge=ImageTk.PhotoImage(Image.open('m.png'))
+imge=ImageTk.PhotoImage(Image.open(f'{folder}/pic/m.png'))
 root.bind('<ButtonRelease-1>',move)
 root.bind('<Double-Button-1>',cm)
 root.bind('<Button-3>',tc)
